@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convert to Black & White</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+  <div class="bg-white p-6 rounded-lg shadow-md w-full max-w-md">
+    <h1 class="text-2xl font-bold text-gray-800 text-center mb-4">Black & White Image Converter</h1>
+    <form action="/process" method="POST" enctype="multipart/form-data" class="space-y-4">
+      <div>
+        <label for="image" class="block text-sm font-medium text-gray-700">Upload an image:</label>
+        <input type="file" id="image" name="image" accept="image/*" required
+          class="mt-2 block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none">
+      </div>
+      <button type="submit"
+        class="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2">
+        Convert to Black & White
+      </button>
+    </form>
+
+    <!-- Display Result -->
+    {% if image_url %}
+    <div class="mt-6">
+      <h2 class="text-lg font-semibold text-gray-800">Result:</h2>
+      <img src="{{ image_url }}" alt="Black and White Image" class="mt-2 rounded-lg shadow">
+      <a href="{{ image_url }}" download="black_and_white.png"
+        class="block mt-4 text-blue-500 hover:underline text-sm text-center">Download Result</a>
+    </div>
+    {% endif %}
+  </div>
+</body>
+</html>
